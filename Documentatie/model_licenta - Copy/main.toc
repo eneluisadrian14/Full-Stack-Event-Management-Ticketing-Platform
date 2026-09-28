@@ -1,0 +1,111 @@
+\contentsline {chapter}{Cuprins}{i}{Doc-Start}%
+\contentsline {chapter}{Lista Figurilor}{vi}{Doc-Start}%
+\contentsline {chapter}{Rezumat}{2}{Doc-Start}%
+\contentsline {chapter}{Rezumat}{2}{Doc-Start}%
+\contentsline {chapter}{Abstract}{3}{Doc-Start}%
+\contentsline {chapter}{Abstract}{3}{Doc-Start}%
+\contentsline {chapter}{\numberline {1}Motiva\c tie}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contextul si problema}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Obiectivele lucrării}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Structura documentului}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Tipuri de evenimente vizate}{6}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Conferinte, meeting-uri si evenimente profesionale}{6}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Concerte si evenimente culturale}{6}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Evenimente sportive si utilizare complementara}{7}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4} Beneficii transversale}{7}{subsection.1.4.4}%
+\contentsline {chapter}{\numberline {2}Starea actual\u a a domeniului}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Studii \c si articole \c stiin\c tifice}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Arhitecturi web \c si API-uri REST}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Securitatea autentific\u arii}{8}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Pl\u a\c ti online \c si gateway-uri}{9}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Persisten\c t\u a \c si baze de date rela\c tionale}{9}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Interfe\c te utilizator \c si SPA}{9}{subsection.2.1.5}%
+\contentsline {section}{\numberline {2.2}Aplica\c tii dedicate domeniului}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Eventbrite}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Platforme locale \c si generice}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Tendințe și standarde în industria ticketing-ului}{10}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Conformitate PCI-DSS și delegarea plăților}{11}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Arhitectura SPA și API REST}{11}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Studiu de caz: fluxul utilizatorului în platforme consacrate}{11}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Criterii de evaluare a soluțiilor}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Analiz\u a comparativ\u a}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Concluzii par\c tiale}{13}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Solu\c tia propus\u a}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Cerinte functionale pentru utilizator si nefunctionale}{14}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Cerinte funtionale pentru utilizator}{14}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Cerin\c te func\c tionale pentru administrator}{14}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Cerin\c te nefunc\c tionale}{15}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Arhitectura sistemului}{15}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Tehnologii utilizate}{16}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Diagrame UML}{16}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Cazuri de utilizare}{16}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Secventa de inregistrare cu verificare prin email}{17}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Secventa pentru plata prin Stripe}{17}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Activitatea la check-in si admin}{18}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Proiectarea bazei de date}{18}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Proiectarea bazei de date}{18}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Implementarea functionalitatilor cheie}{20}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Autentificarea si verificarea prin email}{20}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Plati prin Scripe}{20}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Gestionare evenimente}{21}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Frontend}{21}{subsection.3.6.4}%
+\contentsline {section}{\numberline {3.7}Securitate}{21}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Scenarii de utilizare pe tipuri de evenimente}{21}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Scenariul 1: Conferinta universitara}{22}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Scenariul 2 in care concertul este in aer liber}{22}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Scenariul 3: Meeting corporate / training}{22}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Scenariul 4: Competitie sportiva amatoriala}{23}{subsection.3.8.4}%
+\contentsline {subsection}{\numberline {3.8.5}M}{23}{subsection.3.8.5}%
+\contentsline {subsection}{\numberline {3.8.6}Modelul unificat de date}{23}{subsection.3.8.6}%
+\contentsline {section}{\numberline {3.9}Fragmente suplimentare de implementare}{23}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Rate limiting la inregistrare}{23}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Middleware autentificare JWT}{24}{subsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.9.3}Validare evenimente la creare}{25}{subsection.3.9.3}%
+\contentsline {subsection}{\numberline {3.9.4}Componenta AdminRoute (frontend)}{25}{subsection.3.9.4}%
+\contentsline {subsection}{\numberline {3.9.5}Gestionare erori si feedback utilizator}{25}{subsection.3.9.5}%
+\contentsline {section}{\numberline {3.10}Modelul relational - detaliu tavele}{26}{section.3.10}%
+\contentsline {subsection}{\numberline {3.10.1}Tabel user}{26}{subsection.3.10.1}%
+\contentsline {subsection}{\numberline {3.10.2}Tabele auxiliare}{26}{subsection.3.10.2}%
+\contentsline {section}{\numberline {3.11}API REST - referinta}{26}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Configurare si deployment}{26}{section.3.12}%
+\contentsline {subsection}{\numberline {3.12.1}Variabile de mdiu backend}{26}{subsection.3.12.1}%
+\contentsline {subsection}{\numberline {3.12.2}Migrari baza de date}{28}{subsection.3.12.2}%
+\contentsline {subsection}{\numberline {3.12.3}Flux instalare}{28}{subsection.3.12.3}%
+\contentsline {subsection}{\numberline {3.12.4}Componente frontend}{28}{subsection.3.12.4}%
+\contentsline {subsubsection}{\numberline {3.12.4.1}Rute React Router}{28}{subsubsection.3.12.4.1}%
+\contentsline {subsubsection}{\numberline {3.12.4.2}Context autentificare}{28}{subsubsection.3.12.4.2}%
+\contentsline {subsubsection}{\numberline {3.12.4.3}Temă vizuală}{28}{subsubsection.3.12.4.3}%
+\contentsline {subsection}{\numberline {3.12.5}Confirmare plată — pseudocod}{28}{subsection.3.12.5}%
+\contentsline {subsection}{\numberline {3.12.6}Testare manuală}{29}{subsection.3.12.6}%
+\contentsline {chapter}{\numberline {4}Prezentarea aplica\c tiei}{30}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Utilizarea aplicației — perspectiva utilizatorului}{30}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Pagina principală}{30}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Detalii eveniment}{30}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Înregistrare cont — pasul 1}{32}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Verificare email — pasul 2}{32}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Autentificare}{32}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Confirmare plată}{32}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Biletele mele}{34}{subsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.8}Profil utilizator}{34}{subsection.4.1.8}%
+\contentsline {subsection}{\numberline {4.1.9}Resetare parolă — pasul 1 (opțional)}{35}{subsection.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.10}Resetare parolă — pasul 2 (opțional)}{36}{subsection.4.1.10}%
+\contentsline {section}{\numberline {4.2}Experiență utilizatorului și design responsive}{36}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Parcursul utilizatorului (user journey)}{36}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Adaptare mobil și accesibilitate}{37}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Mesaje de eroare și stări goale}{37}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Utilizarea aplicației — perspectiva administratorului}{37}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Panou admin — dashboard}{37}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Creare / editare eveniment}{37}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Check-in participant}{39}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Gestionare administratori}{39}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Conferință sau simpozion}{40}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Concert sau spectacol}{40}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Meeting, workshop sau seminar}{41}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Eveniment sportiv (caz secundar)}{41}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Recomandări pentru capturi de ecran (capitol 4)}{41}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.10}Accesibilitate și public larg}{41}{subsection.4.3.10}%
+\contentsline {chapter}{\numberline {5}Concluzii}{42}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Rezultate obținute}{42}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Limitări}{42}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Dezvoltări viitoare}{43}{section.5.3}%
+\contentsline {chapter}{Referin\c te bibliografice}{44}{section.5.3}%

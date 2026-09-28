@@ -1,0 +1,277 @@
+% Prezentare licenta ManFast - Beamer
+% Compilare: pdflatex prezentare.tex (de 2 ori)
+\documentclass[aspectratio=169,12pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usetheme{Madrid}
+\usecolortheme{whale}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\graphicspath{{figuri/}{../diagrame/}}
+
+% Incarca imagine daca exista; altfel afiseaza placeholder text
+\newcommand{\slideimage}[3]{%
+	\begin{center}
+		\IfFileExists{#1}{%
+			\includegraphics[width=#2]{#1}%
+		}{%
+			\fbox{\parbox[c][#3][c]{0.85\textwidth}{%
+					\centering\small\textit{[Inserează poza]}\\[0.2em]
+					\small\texttt{\detokenize{#1}}%
+			}}%
+		}%
+	\end{center}%
+}
+
+\title{Aplicație pentru organizarea și gestionarea evenimentelor}
+\subtitle{Implementare: ManFast}
+\author{Ene Luis Adrian}
+\institute{%
+	Facultatea de Mathematică și Informatică\\
+	Specializarea Informatică\\
+	Universitatea Ovidius din Constanța
+}
+\date{2026}
+
+\begin{document}
+	
+	% --- Slide 1: Titlu ---
+	\begin{frame}
+		\titlepage
+		\vspace{-0.5cm}
+		\begin{center}
+			\small Coordonator științific: Lect. univ. dr. Rusu Andrei
+		\end{center}
+	\end{frame}
+	
+	% --- Slide 2: Structura ---
+	\begin{frame}{Structura prezentării}
+		\begin{itemize}
+			\item Context și obiective
+			\item Soluția propusă (ManFast)
+			\item Arhitectură și tehnologii
+			\item Funcționalități utilizator și administrator
+			\item Flux principal și model de date
+			\item Rezultate obținute
+			\item Demonstrație live
+			\item Concluzii și perspective
+		\end{itemize}
+	\end{frame}
+	
+	% --- Slide 3: Problema ---
+	\begin{frame}{Context și problematica actuală}
+		\begin{block}{Ideea principală}
+			Organizarea evenimentelor pe piața locală rămâne adesea fragmentată și dependentă de procese manuale.
+		\end{block}
+		\vspace{0.3cm}
+		\begin{itemize}
+			\item Promovare dispersată pe canale media diferite fără o centralizare clară.
+			\item Plăți nesigure sau manuale (transferuri bancare directe, cash la locație).
+			\item Gestionarea participanților pe liste fizice (hârtie), generând cozi la intrare.
+			\item Dificultăți în reconcilierea numărului de locuri disponibile cu plățile confirmate.
+			\item Lipsa unei platforme dedicate adaptate complet pieței naționale (monedă locală, județe).
+		\end{itemize}
+	\end{frame}
+	
+	% --- Slide 4: Obiective ---
+	\begin{frame}{Obiectivele lucrării}
+		\begin{enumerate}
+			\item \textbf{Securitate:} Autentificare robustă a utilizatorilor (validare email, token JWT, resetare parolă).
+			\item \textbf{Experiență Fluidă:} Descoperirea rapidă a evenimentelor prin mecanisme de filtrare avansată.
+			\item \textbf{Gestiune Financiară:} Emitere de bilete nominale și integrarea plăților online securizate prin Stripe (în RON).
+			\item \textbf{Control Centralizat:} Panou administrativ dedicat pentru managementul evenimentelor și validarea rapidă a participanților (check-in).
+			\item \textbf{Rigurozitate Tehnică:} Documentarea completă a sistemului prin diagrame de arhitectură, diagrame UML și modele ERD.
+		\end{enumerate}
+	\end{frame}
+	
+	% --- Slide 5: Solutia ---
+	\begin{frame}{Soluția propusă: Platforma ManFast}
+		\begin{block}{Platformă web completă full-stack}
+			Un ecosistem digital unificat, dedicat organizatorilor și participanților la conferințe, meeting-uri, spectacole sau concerte.
+		\end{block}
+		\vspace{0.4cm}
+		\begin{itemize}
+			\item \textbf{Evenimente centralizate:} Toate detaliile organizatorice sunt disponibile într-un singur punct de acces.
+			\item \textbf{Bilete nominale:} Fiecare tichet este unic asociat unui cont securizat, prevenind fraudele.
+			\item \textbf{Plăți online rapide:} Integrare nativă cu Stripe Checkout pentru o experiență de plată modernă.
+			\item \textbf{Check-in digital:} Interfață administrativă optimizată pentru scanarea și validarea biletelor la intrare.
+		\end{itemize}
+	\end{frame}
+	
+	% --- Slide 6: Arhitectura (Imagine Pastrata) ---
+	\begin{frame}{Arhitectura sistemului}
+		\begin{center}
+			\textbf{Model Client-Server cu Organizare Stratificată}
+		\end{center}
+		\vspace{-0.2cm}
+		% POZA PASTRATA CONFORM CERINTEI
+		\slideimage{Arhitectura sistemului ManFast.jpg}{0.675\textwidth}{3.3cm}
+		\vspace{-0.2cm}
+		\begin{center}
+			\small React Frontend \textrightarrow{} Express API Backend \textrightarrow{} PostgreSQL Database \quad|\quad Servicii externe: Stripe, Brevo
+		\end{center}
+	\end{frame}
+	
+	% --- Slide 7: Tehnologii ---
+	\begin{frame}{Tehnologii utilizate}
+		\begin{block}{Stiva tehnologică completă}
+			\centering
+			\vspace{0.1cm}
+			\begin{tabular}{@{}ll@{}}
+				\toprule
+				\textbf{Strat / Componentă} & \textbf{Tehnologii alese} \\
+				\midrule
+				Frontend & React 19, Vite, Material UI 9 \\
+				Backend & Node.js, Express API, JWT, bcrypt \\
+				Bază de date & PostgreSQL \\
+				Procesare Plăți & Stripe Checkout API (Procesare nativă în RON) \\
+				Serviciu Email & Brevo SMTP (Verificare cont și notificări) \\
+				\bottomrule
+			\end{tabular}
+		\end{block}
+	\end{frame}
+	
+	% --- Slide 8: Utilizator ---
+	\begin{frame}{Funcționalități -- Rolul de Utilizator}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{Acces și Securitate}
+				\begin{itemize}
+					\item Înregistrare cont nou.
+					\item Verificare obligatorie prin cod e-mail.
+					\item Autentificare securizată prin token-uri JWT stocate rigid.
+					\item Gestiunea profilului și resetarea parolei.
+				\end{itemize}
+			\end{block}
+			\column{0.48\textwidth}
+			\begin{block}{Explorare și Achiziție}
+				\begin{itemize}
+					\item Căutare și filtrare avansată a evenimentelor după multiple criterii.
+					\item Achiziție securizată de bilete.
+					\item Zonă dedicată: „Biletele mele”.
+					\item Generare automată a datelor nominale de acces.
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% --- Slide 9: Administrator ---
+	\begin{frame}{Funcționalități -- Rolul de Administrator}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{Management de Conținut}
+				\begin{itemize}
+					\item Creare completă de evenimente noi.
+					\item Încărcare de imagini reprezentative.
+					\item Configurare detalii logistice, dată, timp și preț bilet.
+					\item Editarea și actualizarea datelor.
+				\end{itemize}
+			\end{block}
+			\column{0.48\textwidth}
+			\begin{block}{Control și Validare}
+				\begin{itemize}
+					\item Vizualizarea listei complete de participanți înscriși.
+					\item Modul dedicat de check-in în timp real la intrarea în sală.
+					\item Drepturi avansate de promovare sau revocare a altor administratori.
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% --- Slide 10: Flux principal ---
+	\begin{frame}{Fluxul principal al unui participant}
+		\begin{block}{Traseul utilizatorului în platformă}
+			\begin{enumerate}
+				\item \textbf{Descoperire:} Identifică și filtrează evenimentul dorit în interfața principală.
+				\item \textbf{Autentificare:} Se conectează securizat sau confirmă contul nou prin e-mail.
+				\item \textbf{Tranzacționare:} Selectează biletul nominal și inițiază fluxul securizat Stripe Checkout.
+				\item \textbf{Posesie:} După confirmarea plății, biletul devine instant disponibil în secțiunea personală.
+				\item \textbf{Validare:} La locație, administratorul validează biletul prin sistemul intern de check-in.
+			\end{enumerate}
+		\end{block}
+	\end{frame}
+	
+	% --- Slide 11: Model date (Imagine Pastrata) ---
+	\begin{frame}{Modelul de date (ERD)}
+		\vspace{-0.2cm}
+		% POZA PASTRATA CONFORM CERINTEI
+		\slideimage{Model de domeniu _ ERD ManFast.jpg}{0.75\textwidth}{4cm}
+		\vspace{-0.2cm}
+		\begin{center}
+			\small Structură relațională optimizată. Tabele nucleu: \texttt{users}, \texttt{events}, \texttt{tickets}
+		\end{center}
+	\end{frame}
+	
+	% --- Slide 12: Rezultate ---
+	\begin{frame}{Rezultate obținute}
+		\begin{itemize}
+			\item \textbf{Aplicație completă:} Mediu full-stack perfect funcțional, fluid și stabil.
+			\item \textbf{Securitate end-to-end:} Sistem de autentificare modern bazat pe cele mai bune practici din industrie.
+			\item \textbf{Tranzacții reale:} Sistem de plăți sandbox complet funcțional în moneda națională (RON).
+			\item \textbf{Panou administrativ integrat:} Gestiune dinamică și proces rapid de validare la eveniment.
+			\item \textbf{Bază solidă documentară:} Arhitectură curată, diagrame UML clare și API REST documentat extensiv.
+		\end{itemize}
+	\end{frame}
+	
+	% --- Slide 13: Demonstratie ---
+	\begin{frame}{Demonstrație practică}
+		\begin{columns}[T]
+			\column{0.48\textwidth}
+			\begin{block}{Videoclip demonstrativ}
+				\begin{itemize}
+					\item Videoclip
+				\end{itemize}
+			\end{block}
+		\end{columns}
+	\end{frame}
+	
+	% --- Slide 14: Concluzii ---
+	\begin{frame}{Concluzii și perspective de dezvoltare}
+		\begin{block}{Concluzii}
+			Rezultatul: o platformă modernă, robustă și adaptată cerințelor actuale.
+		\end{block}
+		\vspace{0.2cm}
+		\textbf{Direcții viitoare de dezvoltare (Perspective):}
+		\begin{itemize}
+			\item Implementarea unui sistem avansat de Webhooks Stripe pentru confirmarea asincronă a plăților.
+			\item Suport pentru categorii multiple de bilete (VIP, Early Bird, Acces General).
+			\item Integrarea testelor automate unitare și end-to-end
+		\end{itemize}
+	\end{frame}
+	
+	% --- Slide 15: Multumiri ---
+	\begin{frame}{Încheiere}
+		\begin{center}
+			\Large \textbf{Vă mulțumesc pentru atenție!}
+			\vspace{0.8cm}
+			
+			\normalsize
+			\textbf{Lect. univ. dr. Rusu Andrei}\\
+			(Coordonator științific)
+			\vspace{0.5cm}
+			
+			Membrii comisiei de examinare\\
+		
+		\end{center}
+	\end{frame}
+	
+	% --- Slide 16: Bibliografie ---
+	\begin{frame}[allowframebreaks]{Bibliografie selectivă}
+		\footnotesize
+		\begin{itemize}
+			\item R. Fielding. \textit{Architectural Styles and the Design of Network-based Software Architectures}, 2000.
+			\item M. Fowler. \textit{Patterns of Enterprise Application Architecture}, 2002.
+			\item Stripe. \textit{Checkout Sessions API Documentation}, 2024.
+			\item React Team. \textit{React Documentation}, 2024.
+			\item OWASP. \textit{Authentication Cheat Sheet}, 2023.
+		\end{itemize}
+	\end{frame}
+	
+\end{document}

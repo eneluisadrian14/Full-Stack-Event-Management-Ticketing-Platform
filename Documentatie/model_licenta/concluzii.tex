@@ -1,0 +1,44 @@
+\chapter{Concluzii}
+
+\section{Rezultate ob\c tinute}
+
+Lucrarea de licen\c t\u a a avut ca obiectiv dezvoltarea \textbf{aplica\c tiei web pentru organizarea \c si gestionarea evenimentelor}, orientate \^int\^ai spre conferin\c te, meeting-uri, concerte \c si evenimente culturale, cu suport complementar pentru competi\c tii sportive. Obiectivele propuse au fost atinse:
+
+\begin{itemize}
+	\item Aplica\c tie full-stack func\c tional\u a: React + Express + PostgreSQL.
+	\item Autentificare complet\u a: \^inregistrare cu verificare email, login JWT, resetare parol\u a, profil, \c stergere cont.
+	\item Listare \c si filtrare evenimente (nume, jude\c t, dat\u a).
+	\item Pl\u a\c ti Stripe Checkout \^in RON; bilete nominale \c si ,,Biletele mele``.
+	\item Panou admin: CRUD evenimente cu imagini, check-in, gestionare admini.
+	\item Documentare: arhitectur\u a, ERD, UML, API REST, scenarii pe tipuri de evenimente.
+\end{itemize}
+
+Solu\c tia demonstreaz\u a integrarea unor tehnologii moderne \^intr-un produs coerent, adaptat contextului rom\^anesc (jude\c te, RON, email Brevo).
+
+
+\section{Limit\u ari}
+
+\begin{itemize}
+	\item Lips\u a teste automate (unit/integration) \c si pipeline CI/CD.
+	\item Promovarea primului administrator necesit\u a script SQL sau \texttt{promote-admin}.
+	\item Emailurile depind de configurarea SMTP; \^in development, codurile pot ap\u area \^in consola backend.
+	\item Confirmarea pl\u a\c tii se bazeaz\u a pe apel frontend \texttt{confirm-payment}; webhook Stripe ar \^imbun\u at\u a\c ti robuste\c tea.
+	\item Un singur tip de pre\c t per eveniment — f\u ar\u a categorii VIP/standard sau locuri numerotate.
+\end{itemize}
+
+\section{Dezvolt\u ari viitoare}
+
+Dezvoltarea aplica\c tiei poate fi continuat\u a prin abordarea limit\u arilor identificate \c si ad\u augarea de noi func\c tionalit\u a\c ti:
+
+\begin{itemize}
+	\item Categorii de bilete (conferin\c t\u a: early bird / regular; concert: VIP).
+	\item Export participan\c ti CSV din panoul admin.
+	\item Notific\u ari email la cump\u arare bilet reu\c sit\u a.
+	\item Paginare evenimente \c si caching.
+	\item Webhook Stripe pentru confirmare server-side.
+	\item Teste automate \c si deploy containerizat (Docker).
+	\item Aplica\c tie mobil\u a sau PWA pentru check-in offline.
+	\item Module op\c tionale pentru evenimente sportive (echipe, program).
+\end{itemize}
+
+Aplica\c tia reprezint\u a o baz\u a solid\u a pentru extindere \^intr-un produs destinat organizatorilor de conferin\c te, concerte \c si meeting-uri, cu accent pe simplitate, securitate \c si experien\c ta utilizatorului.

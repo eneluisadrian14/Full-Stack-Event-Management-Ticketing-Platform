@@ -1,0 +1,75 @@
+\documentclass[a4paper,12pt,oneside]{report}
+\usepackage{OvidiusFMI}
+
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color,xcolor}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,url,array}
+\usepackage{multicol,multirow}
+%\usepackage{xspace}
+%\include{command}
+\include{custom-lst-style}
+%\makeindex
+% Remove command to get current date 
+
+%-----------------------------------------------------------------------------------------------------------%
+% START - PORTIUNE CUSTOMIZABILA PRIMA PAGINA DE CATRE FIECARE ABSOLVENT%
+%vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv%
+
+\facultatea{Matematic\u a \c si Informatic\u a}
+
+%decomentati specializarea corespunzatoare domeniului si comentati ce nu corespunde
+\specializarea{Informatic\u a}
+%\specializare{Matematic\u a}
+%\specializare{Matematic\u a - Informatic\u a}
+
+%decomentati tipul lucrarii de absolvire si comentati ce nu corespunde
+\teza{licen\c t\u a}
+%\teza{diserta\c tie}
+
+\titlu{Titlul extins al lucr\u arii de absolvire}
+
+% Orice lucrare are cel putin un coordonator stiintific. Primul este OBLIGATORIU si il vom 
+% numi Coordonator Principal
+\gradDidacticCP{Lect. univ. dr.}%OBLIGATORIU
+\coordonatorPrincipal{Rusu Andrei} %OBLIGATORIU
+% Daca exista doi coordonatori se va preciza si cel de al doilea
+%\gradDidacticCS{Asist. univ. dr.} %OPTIONAL
+%\coordonatorSecundar{Nume Prenume Coordonator Secundar} %OPTIONAL
+
+\autor{Ene Luis Adrian}
+\data{2026}% anul sustinerii lucrarii
+
+%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^%
+% END - PORTIUNE CUSTOMIZABILA PRIMA PAGINA DE CATRE FIECARE ABSOLVENT%
+%---------------------------------------------------------------------------------------------------------%
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+
+\pagenumbering{arabic}
+
+%\include{prefata} % OPTIONAL
+%\include{multumiri} % OPTIONAL
+
+\include{rezumat}
+\include{motivatie} % OBLIGATORIU
+\include{staredomeniu} % OBLIGATORIU
+\include{solutiepropusa} % OBLIGATORIU
+\include{prezentareaplicatie} % OBLIGATORIU - Specializarea Informatica
+\include{concluzii} % OBLIGATORIU
+
+\bibliographystyle{unsrt}
+\setlength{\baselineskip}{\normalbaselineskip}
+\setlength{\parskip}{0pt}
+\bibliography{refs} % Fisierul continand bibliografia citata a lucrarii
+\end{document}
+

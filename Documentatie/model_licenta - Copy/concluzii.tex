@@ -1,0 +1,44 @@
+\chapter{Concluzii}
+
+\section{Rezultate obținute}
+
+Lucrarea de licență a avut ca obiectiv dezvoltarea \textbf{aplicației web pentru organizarea și gestionarea evenimentelor}, orientate întâi spre conferințe, meeting-uri, concerte și evenimente culturale, cu suport complementar pentru competiții sportive. Obiectivele propuse au fost atinse:
+
+\begin{itemize}
+	\item Aplicație full-stack funcțională: React + Express + PostgreSQL.
+	\item Autentificare completă: înregistrare cu verificare email, login JWT, resetare parolă, profil, ștergere cont.
+	\item Listare și filtrare evenimente (nume, județ, dată).
+	\item Plăți Stripe Checkout în RON; bilete nominale și ,,Biletele mele``.
+	\item Panou admin: CRUD evenimente cu imagini, check-in, gestionare admini.
+	\item Documentare: arhitectură, ERD, UML, API REST, scenarii pe tipuri de evenimente.
+\end{itemize}
+
+Soluția demonstrează integrarea unor tehnologii moderne într-un produs coerent, adaptat contextului românesc (județe, RON, email Brevo).
+
+
+\section{Limitări}
+
+\begin{itemize}
+	\item Lipsă teste automate (unit/integration) și pipeline CI/CD.
+	\item Promovarea primului administrator necesită script SQL sau \texttt{promote-admin}.
+	\item Emailurile depind de configurarea SMTP; în development, codurile pot apărea în consola backend.
+	\item Confirmarea plății se bazează pe apel frontend \texttt{confirm-payment}; webhook Stripe ar îmbunătăți robustețea.
+	\item Un singur tip de preț per eveniment — fără categorii VIP/standard sau locuri numerotate.
+\end{itemize}
+
+\section{Dezvoltări viitoare}
+
+Dezvoltarea aplicației poate fi continuată prin abordarea limitărilor identificate și adăugarea de noi funcționalități:
+
+\begin{itemize}
+	\item Categorii de bilete (conferință: early bird / regular; concert: VIP).
+	\item Export participanți CSV din panoul admin.
+	\item Notificări email la cumpărare bilet reușită.
+	\item Paginare evenimente și caching.
+	\item Webhook Stripe pentru confirmare server-side.
+	\item Teste automate și deploy containerizat (Docker).
+	\item Aplicație mobilă sau PWA pentru check-in offline.
+	\item Module opționale pentru evenimente sportive (echipe, program).
+\end{itemize}
+
+Aplicația reprezintă o bază solidă pentru extindere într-un produs destinat organizatorilor de conferințe, concerte și meeting-uri, cu accent pe simplitate, securitate și experiența utilizatorului.

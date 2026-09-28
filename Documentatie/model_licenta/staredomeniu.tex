@@ -1,0 +1,136 @@
+\chapter{Starea actual\u a a domeniului}
+\vspace*{-1cm}
+\^In acest capitol este analizat contextul \^in care se \^incadreaz\u a aplica\c tia web pentru organizarea \c si gestionarea evenimentelor: cercet\u ari relevante pentru comer\c tul electronic, ticketing online \c si securitate web, platforme existente \c si o compara\c tie func\c tional\u a.
+
+\section{Studii \c si articole \c stiin\c tifice}
+
+\subsection{Arhitecturi web \c si API-uri REST}
+
+Fielding \cite{fielding2000} define\c ste principiile REST (\textit{Representational State Transfer}) ca stil arhitectural pentru sisteme distribuite. Separarea clientului de server, utilizarea resurselor adresabile prin URI \c si a metodelor HTTP standard (GET, POST, PUT, DELETE) faciliteaz\u a dezvoltarea aplica\c tiilor web scalabile. ManFast expune un API REST \^in Node.js/Express, consumat de frontend-ul React abordare aliniat\u a cu recomand\u arile din literatura de specialitate.
+
+Fowler \cite{fowler2002} descrie tipare de proiectare enterprise, inclusiv separarea responsabilit\u a\c tilor \^intre straturi (prezentare, logic\u a de business, persisten\c t\u a). Aplica\c tia analizat\u a respect\u a acest principiu: React gestioneaz\u a UI, Express con\c tine regulile de business, PostgreSQL stocheaz\u a datele.
+
+\subsection{Securitatea autentific\u arii}
+
+OWASP \cite{owasp2024} enumer\u a bune practici pentru autentificare: hash-uirea parolelor (nu stocarea \^in clar), protec\c tia sesiunilor, limitarea ratei de cereri, validarea input-ului. ManFast implementeaz\u a bcrypt pentru parole, JWT cu expirare 24h, rate limiting pe codurile de verificare a e-mailurilor \c si resetare parolei.
+
+Standardul JWT (JSON Web Token) \cite{jwt2015} permite transmiterea securizat\u a a claims-urilor \^intre p\u ar\c ti. Token-ul semnat con\c tine id-ul utilizatorului \c si rolul (user/admin), verificat la fiecare cerere protejat\u a.
+
+Provos \c si Mazi\`eres \cite{bcrypt1999} introduc bcrypt, algoritm de hash adaptat la cost computa\c tional configurabil, rezistent la atacuri brute-force pe parole. ManFast folose\c ste cost factor 10.
+
+\subsection{Pl\u a\c ti online \c si gateway-uri}
+
+Documenta\c tia Stripe \cite{stripe2024} descrie fluxul Checkout: sesiune de plat\u a g\u azduit\u a, redirect c\u atre pagina securizat\u a Stripe, confirmare prin webhook sau verificare sesiune. ManFast creeaz\u a sesiuni Checkout cu metadata (event\_id, user\_id, nume participan\c ti) \c si confirm\u a plata prin endpoint dedicat, f\u ar\u a a stoca date de card pe serverul propriu --- reduc\^and responsabilitatea PCI-DSS.
+
+\subsection{Persisten\c t\u a \c si baze de date rela\c tionale}
+
+PostgreSQL \cite{postgresql2024} ofer\u a tranzac\c tii ACID, constr\u angeri de integritate referen\c tial\u a \c si tipuri \linebreak avansate (ex.: array pentru imagini eveniment). Schema ManFast exploateaz\u a aceste capabilit\u a\c ti pentru consisten\c ta bilete/locuri disponibile.
+
+\subsection{Interfa\c t\u a utilizator \c si SPA}
+
+React \cite{react2024} \c si ecosistemul s\u au permit construirea de \textit{Single Page Applications reactive}. Material UI \cite{mui2024} ofer\u a componente accesibile \c si responsive. ManFast utilizeaz\u a React 19, Vite pentru build rapid \c si MUI 9 cu tem\u a dark personalizat\u a.
+
+\section{Aplica\c tii dedicate domeniului}
+
+\subsection{Eventbrite}
+
+Eventbrite \cite{eventbrite2024} este o platform\u a interna\c tional\u a pentru crearea \c si promovarea evenimentelor, cu v\^anzare bilete, pagini de destina\c tie \c si instrumente de marketing. Ofer\u a check-in prin cod QR \c si analiz\u a audien\c t\u a. Platforma suport\u a multiple tipuri de evenimente: concerte, conferin\c te, workshop-uri. Fluxul tipic: organizatorul creeaz\u a pagina evenimentului, seteaz\u a pre\c turile \c si capacitatea, promoveaz\u a link-ul, iar participan\c tii achizi\c tioneaz\u a bilete online.
+
+Limit\u ari pentru organizatori mici: comisioane per bilet, personalizare redus\u a a fluxului de check-in, dependen\c t\u a de ecosistemul proprietar. Datele participan\c tilor sunt stocate pe infrastructura Eventbrite, nu \^in controlul direct al organizatorului. Pentru conferin\c te cu sesiuni paralele sau concerte cu locuri numerotate, unele func\c tionalit\u a\c ti avansate pot lipsi sau necesit\u a addon-uri pl\u atite.
+
+Din perspectiva tehnologic\u a, astfel de platforme folosesc arhitecturi cloud scalabile, procesare pl\u a\c ti prin PSP integrat \c si aplica\c tii mobile pentru scanare QR. ManFast adopt\u a un subset al acestor capabilit\u a\c ti, orientat spre simplitate \c si control local al datelor \^in PostgreSQL.
+
+
+
+
+\subsection{Platforme locale \c si generice}
+
+Pe pia\c ta rom\^aneasc\u a exist\u a solu\c tii pentru bilete la concerte \c si festivaluri (iaBilet, Eventim), precum \c si platforme e-commerce generice (WooCommerce, Shopify) care pot vinde ``produse'' reprezent\^and locuri la eveniment. Acestea sunt optimizate pentru v\^anzare la scar\u a larg\u a, nu neap\u arat pentru meeting-uri corporate sau conferin\c te universitare.
+
+Organizatorii locali folosesc frecvent formulare Google, pl\u a\c ti directe \c si liste Excel solu\c tii cu cost zero ini\c tial, dar cu risc ridicat de erori \c si lips\u a de audit trail pentru pl\u a\c ti. Reconcilierea manual\u a a listei de participan\c ti cu transferurile bancare consum\u a timp \c si poate genera dispute la intrarea \^in sal\u a.
+
+Aplica\c tia propus\u a \^incerc\u a s\u a ofere un echilibru: cost de operare redus (self-hosted), flux clar de la descoperire eveniment la plat\u a \c si check-in, f\u ar\u a complexitatea unei platforme glo-bale. Adaptarea la jude\c tele rom\^ane\c ti \c si pl\u a\c ti RON via Stripe reprezint\u a un avantaj competitiv \^in contextul local fa\c t\u a de solu\c tiile generice interna\c tionale.
+
+\subsection{Tendin\c te \c si standarde \^in industria ticketing-ului}
+
+Industria biletelor electronice a crescut accelerat dup\u a pandemia COVID-19, c\^and contactless check-in \c si pl\u a\c tile online au devenit norm\u a. Platformele mature investesc \^in trei direc\c tii: (1) experien\c t\u a mobil\u a — aplica\c tii native sau PWA pentru scanare rapid\u a; (2) analitic\u a — dashboard-uri de v\^anz\u ari, heatmap-uri de pre\c turi dinamice; (3) integrare marketing — email automation, remarketing pe re\c tele sociale.
+
+ManFast nu urm\u are\c ste replicarea tuturor acestor capabilit\u a\c ti enterprise, ci func\c tionalitatea minim\u a viabil\u a pentru organizatori locali: publicare eveniment, v\^anzare online, list\u a \linebreak participan\c ti, check-in la intrare. Aceast\u a decizie de scope este aliniat\u a cu principiul MVP (\textit{Minimum Viable Product}) din literatura de product management.
+
+\subsection{Conformitate PCI-DSS \c si delegarea pl\u a\c tilor}
+
+Standardul PCI-DSS (\textit{Payment Card Industry Data Security Standard}) impune m\u asuri stricte pentru orice sistem care proceseaz\u a, stocheaz\u a sau transmite date de card. Solu\c tiile care folosesc Stripe Checkout hosted deleg\u a colectarea datelor sensibile c\u atre Stripe comerciantul prime\c ste doar confirmarea pl\u a\c tii prin API. \newpage ManFast adopt\u a explicit acest model: frontend-ul redirec\c tioneaz\u a utilizatorul pe domeniul \textbf{checkout.stripe.com}, iar backend-ul verific\u a statusul sesiunii f\u ar\u a a vedea num\u arul de card.
+
+Aceast\u a abordare reduce suprafa\c ta de atac \c si simplific\u a auditul de securitate pentru o lucrare de licen\c t\u a, men\c tin\^and totodat\u a un flux profesional de plat\u a recunoscut de utilizatori.
+
+\subsection{Arhitectura SPA \c si API REST}
+
+Aplica\c tiile \textit{Single Page Application} (SPA) [8] \^incarc\u a o singur\u a pagin\u a HTML \c si navigheaz\u a prin JavaScript, ob\c tin\^and date de la server prin API JSON.
+
+ \textbf{Avantaje}: interfa\c t\u a reactiv\u a, separare clar\u a frontend/backend, posibilitatea de a extinde ulterior cu aplica\c tie mobil\u a consum\^and acela\c si API.
+
+\textbf{Dezavantaje} relevante pentru ManFast: SEO limitat pe pagini dinamice (acceptabil pentru platform\u a cu autentificare), necesitatea gestion\u arii token-ului JWT pe client. Compara\c tia cu arhitectura server-side rendering (Next.js) ar fi o extensie viitoare; pentru licen\c t\u a, Vite + React ofer\u a timp de dezvoltare redus \c si ecosistem bogat (Material UI).
+
+\subsection{Studiu de caz: fluxul utilizatorului \^in platforme consacrate}
+
+Pe Eventbrite, utilizatorul parcurge: descoperire eveniment → selectare tip bilet → checkout → email confirmare cu PDF/QR. Organizatorul acceseaz\u a dashboard cu statistici v\^anz\u ari \c si export CSV participan\c ti.
+
+ManFast simplific\u a acest flux pentru organizatori locali (conferin\c te, concerte, meeting-uri):
+
+- un singur tip de bilet pe eveniment (pre\c t unic);
+
+- nume nominal obligatoriu (identificare la check-in);
+
+- f\u ar\u a marketplace global, evenimentele sunt listate doar pe instan\c ta ManFast;
+
+- check-in manual din panou admin, f\u ar\u a aplica\c tie mobil\u a dedicat\u a scan\u arii QR (extensie viitoare).
+
+Aceast\u a simplificare reduce complexitatea implement\u arii \c si timpul de \^inv\u a\c tare pentru administratori neexperimenta\c ti \^in IT.
+
+\section{Criterii de evaluare a solu\c tiilor}
+
+Pentru a fundamenta compara\c tia din \textit{Tabelul 2.2}, au fost definite criterii ponderate:
+
+Adecvare func\c tional\u a (40\%) — suport bilete nominale, check-in, filtrare local\u a.
+
+Cost total de operare (20\%) — comisioane PSP, abonamente platform\u a, hosting.
+
+Control date (20\%) — unde sunt stocate datele participan\c tilor, export, GDPR.
+
+Personalizare (10\%) — posibilitatea modific\u arii fluxului sau branding.
+
+Securitate autentificare (10\%) — verificare email, reset parol\u a, roluri.
+
+ManFast ob\c tine scor ridicat la control date \c si personalizare (cod deschis, PostgreSQL propriu), scor mediu la cost (Stripe per tranzac\c tie, hosting self-managed), \c si scor bun la adecvare func\c tional\u a pentru ni\c sa aleas\u a.
+
+Aceste analize suplimentare contextualizeaz\u a pozi\c tionarea ManFast fa\c t\u a de solu\c tiile \newline  existente \c si justific\u a alegerile de scope ale proiectului.
+
+\section{Analiz\u a comparativ\u a}
+
+Tabelul~\ref{tab:comparatie} sintetizeaz\u a diferen\c tele \^intre platforme reprezentative \c si aplica\c tia propus\u a.
+
+\begin{table}[htbp]
+	\centering
+	\renewcommand{\arraystretch}{1.5} 
+	\setlength{\tabcolsep}{6pt} 
+	\begin{tabular}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{3.5cm}|}
+		\hline
+		\textbf{Func\c tionalitate} & \textbf{Eventbrite} & \textbf{Generic e-comm} & \textbf{Aplica\c tia propus\u a} \\ \hline
+		Bilete nominale & Da & Par\c tial & Da \\ \hline
+		Pl\u a\c ti Stripe RON & Nu (alte PSP) & Variabil & Da \\ \hline
+		Check-in admin & Da (QR) & Nu & Da (list\u a) \\ \hline
+		Verificare email register & Da & Variabil & Da (cod 6 cifre) \\ \hline
+		Filtrare jude\c t/dat\u a & Da & Nu & Da (42 jude\c te) \\ \hline
+		Cod deschis / personalizabil & Nu & Nu & Da \\ \hline
+		Reset parol\u a tel.+email & Variabil & Variabil & Da \\ \hline
+	\end{tabular}
+	\caption{Compara\c tie func\c tional\u a}
+	\label{tab:comparatie}
+\end{table}
+
+\section{Concluzii par\c tiale}
+
+Analiza demonstreaz\u a c\u a exist\u a un spa\c tiu pentru o solu\c tie adaptat\u a: conferin\c te, meeting-uri, concerte \c si evenimente culturale, cu pl\u a\c ti RON via Stripe, bilete pe nume \c si admi-nistrare simpl\u a. Aplica\c tia propune o implementare open-source, extensibil\u a, care integreaz\u a func\c tionalit\u a\c tile esen\c tiale \c si le aliniaz\u a cu cerin\c tele locale (jude\c te, SMTP Brevo pentru e-mailuri).
+
+\vspace{0.3cm}
+\noindent Urm\u atorul capitol detaliaz\u a arhitectura, tehnologiile \c si implementarea solu\c tiei propuse.
