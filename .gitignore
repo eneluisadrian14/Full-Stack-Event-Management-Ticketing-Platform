@@ -32,3 +32,7 @@ Thumbs.db
 # Copie locală / arhivă — nu aparțin repo-ului sursă
 Lucrare de licenta - Ene Luis/
 *.zip
+
+# Documentație păstrată doar local
+Documentatie/
+doc/
